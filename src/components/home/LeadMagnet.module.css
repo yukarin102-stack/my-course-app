@@ -1,0 +1,226 @@
+.section {
+    padding: 8rem 2rem;
+    /* 余白を大幅に拡大 */
+    background: linear-gradient(135deg, #fef9c3 0%, #fef3c7 100%);
+    /* 薄めのゴールド/黄色 */
+    color: #1f2937;
+    /* ダークグレーのテキスト */
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid #fde68a;
+    border-bottom: 1px solid #fde68a;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    /* コンテンツ間の隙間を広げる */
+    align-items: center;
+}
+
+@media (max-width: 1024px) {
+    .content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+
+    .textContent {
+        text-align: center;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .benefits {
+        align-items: center;
+        /* 中央揃え */
+    }
+
+    .formCard {
+        max-width: 600px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+.badge {
+    display: inline-block;
+    background-color: #fbbf24;
+    /* 濃いゴールド */
+    color: white;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-md);
+    box-shadow: 0 4px 6px rgba(251, 191, 36, 0.3);
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-lg);
+    color: #111827;
+}
+
+.description {
+    font-size: 1.15rem;
+    color: #4b5563;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-xl);
+}
+
+.benefits {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.benefits li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.icon {
+    color: #d97706;
+    /* 濃いオレンジ/ゴールド */
+    flex-shrink: 0;
+}
+
+/* Form Card */
+.formCard {
+    background-color: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    color: var(--color-foreground);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border: 2px solid #fcd34d;
+    /* ゴールドの枠線 */
+}
+
+.formTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    background: linear-gradient(to right, #d97706, #b45309);
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* 標準プロパティ追加 */
+    -webkit-text-fill-color: transparent;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.label {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.input {
+    padding: var(--spacing-md);
+    border: 1px solid #ccc;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #d97706;
+    box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.2);
+}
+
+.submitButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    background: linear-gradient(to right, #8b5cf6, #7c3aed);
+    /* 紫色グラデーションでクリック率向上 */
+    color: white;
+    padding: var(--spacing-md);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: var(--spacing-sm);
+    box-shadow: 0 4px 6px rgba(124, 58, 237, 0.3);
+}
+
+.submitButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(124, 58, 237, 0.4);
+}
+
+.submitButton:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.privacyNote {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: var(--spacing-sm);
+    line-height: 1.5;
+}
+
+.successState {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+}
+
+.successIcon {
+    color: #22c55e;
+    margin-bottom: var(--spacing-md);
+}
+
+.successTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: var(--spacing-md);
+}
+
+.errorMessage {
+    background-color: #fee2e2;
+    color: #ef4444;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: 0.9rem;
+}
+
+.resetButton {
+    margin-top: var(--spacing-lg);
+    background: none;
+    border: none;
+    color: #d97706;
+    text-decoration: underline;
+    cursor: pointer;
+}

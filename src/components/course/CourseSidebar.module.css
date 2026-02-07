@@ -1,0 +1,121 @@
+.sidebar {
+    width: 350px;
+    background-color: #1a1a1a;
+    border-right: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-y: hidden;
+}
+
+.sidebarHeader {
+    padding: var(--spacing-lg, 1.5rem);
+    border-bottom: 1px solid #333;
+    background-color: #1a1a1a;
+    flex-shrink: 0;
+}
+
+.courseTitle {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.navigationSection {
+    border-bottom: 1px solid #333;
+    background-color: #222;
+}
+
+.navLink {
+    display: block;
+    padding: var(--spacing-md, 1rem) var(--spacing-lg, 1.5rem);
+    color: #aaa;
+    text-decoration: none;
+    font-weight: bold;
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+}
+
+.navLink:hover {
+    background-color: #333;
+    color: white;
+}
+
+.navLink.active {
+    background-color: #333;
+    color: white;
+    border-left-color: var(--color-primary, #0070f3);
+}
+
+.moduleList {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.moduleItem {
+    border-bottom: 1px solid #333;
+}
+
+.moduleTitle {
+    padding: var(--spacing-md, 1rem) var(--spacing-lg, 1.5rem);
+    background-color: #222;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #aaa;
+}
+
+.lessonList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.lessonItem {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm, 0.5rem);
+    padding: var(--spacing-md, 0.8rem) var(--spacing-lg, 1.5rem);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.95rem;
+    border-left: 3px solid transparent;
+}
+
+.lessonItem:hover {
+    background-color: #333;
+}
+
+.lessonItem.active {
+    background-color: #333;
+    color: white;
+    border-left-color: var(--color-primary, #0070f3);
+}
+
+.lessonIcon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+}
+
+.checkbox {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #555;
+    border-radius: 50%;
+    margin-right: var(--spacing-xs, 0.25rem);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox.completed {
+    background-color: #22c55e;
+    border-color: #22c55e;
+}

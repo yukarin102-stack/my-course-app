@@ -1,0 +1,116 @@
+.formContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: var(--spacing-2xl);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.pageTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.label {
+    font-weight: bold;
+    color: #374151;
+    font-size: 0.9rem;
+}
+
+.input,
+.textarea {
+    padding: var(--spacing-md);
+    border: 1px solid #d1d5db;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-family: "Yu Gothic", "YuGothic", sans-serif;
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    cursor: pointer;
+    user-select: none;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid #e5e7eb;
+}
+
+.submitButton {
+    padding: var(--spacing-md) var(--spacing-xl);
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cancelButton {
+    padding: var(--spacing-md) var(--spacing-xl);
+    background-color: #f3f4f6;
+    color: #374151;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.error {
+    background-color: #fee2e2;
+    color: #ef4444;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Edit Page Specific */
+.headerActions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.moduleList {
+    margin-top: var(--spacing-2xl);
+}
+
+.moduleItem {
+    border: 1px solid #e5e7eb;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+    background-color: #f9fafb;
+}
+
+.moduleHeader {
+    padding: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e7eb;
+}
