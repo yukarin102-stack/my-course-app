@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+export const dynamic = 'force-dynamic';
 import { db } from "@/lib/db";
 import { enrollments, courses } from "@/db/schema";
 import { eq } from "drizzle-orm";
