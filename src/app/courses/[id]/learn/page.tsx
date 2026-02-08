@@ -1,6 +1,6 @@
 import { auth, signIn } from "@/auth";
 import { db } from "@/lib/db";
-import { courses, modules, lessons, progress, quizQuestions, quizOptions, submissions, oneTimeTokens } from "@/db/schema";
+import { courses, modules, lessons, progress, quizQuestions, quizOptions, submissions, oneTimeTokens, enrollments } from "@/db/schema";
 import { eq, and, asc } from "drizzle-orm";
 import { redirect, notFound } from "next/navigation";
 import styles from "./Learn.module.css";
@@ -49,6 +49,23 @@ export default async function LearnPage({
     const session = await auth();
     if (!session?.user?.id) {
         redirect(`/login?callbackUrl=/courses/${id}/learn`);
+    }
+
+    // Enrollment Check
+    const enrollment = await db.query.enrollments.findFirst({
+        where: (enrollments, { and, eq }) => and(
+            eq(enrollments.userId, session.user!.id!),
+            eq(enrollments.courseId, id)
+        ),
+    });
+
+    // Admin override (optional: allowing admins to view without enrollment)
+    const isAdmin = (session.user as any).role === 'admin';
+
+    if (!enrollment && !isAdmin) {
+        // Not enrolled -> redirect to dashboard or sales page?
+        // For now, redirect to dashboard with message
+        redirect('/dashboard?error=not_enrolled');
     }
 
     const course = await db.query.courses.findFirst({

@@ -46,12 +46,74 @@ export default async function PublicViewPage({
         );
     }
 
+    // Prepare modules data for client component
+    const modulesData = modulesWithLessons.map(m => ({
+        id: m.id,
+        title: m.title,
+        lessons: m.lessons.map(l => ({
+            id: l.id,
+            title: l.title,
+            type: l.type
+        }))
+    }));
+
     const currentLesson = lessonId
         ? allLessons.find(l => l.id === lessonId)
         : allLessons[0];
 
     if (!currentLesson) {
         return <div>Lesson not found</div>;
+    }
+
+    // Security Check: Only allow free lessons in public view
+    if (!currentLesson.isFree) {
+        return (
+            <div className={styles.container}>
+                <PublicSidebar
+                    courseId={id}
+                    courseTitle={course.title}
+                    modules={modulesData}
+                    currentLessonId={currentLesson.id}
+                />
+                <main className={styles.mainContent}>
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        height: '100%',
+                        padding: '2rem',
+                        textAlign: 'center',
+                        backgroundColor: '#f8fafc',
+                        borderRadius: '8px'
+                    }}>
+                        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🔒</div>
+                        <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem', color: '#1e293b' }}>
+                            このレッスンは有料コンテンツです
+                        </h2>
+                        <p style={{ marginBottom: '2rem', color: '#475569' }}>
+                            この続きをご覧になるには、講座の購入が必要です。<br />
+                            すでに購入済みの方は、ログインして学習ページからアクセスしてください。
+                        </p>
+                        <div style={{ display: 'flex', gap: '1rem' }}>
+                            <a
+                                href={`/login?callbackUrl=/courses/${id}/learn?lessonId=${currentLesson.id}`}
+                                style={{
+                                    padding: '0.75rem 1.5rem',
+                                    backgroundColor: '#2563eb',
+                                    color: 'white',
+                                    borderRadius: '6px',
+                                    fontWeight: 'bold',
+                                    textDecoration: 'none'
+                                }}
+                            >
+                                ログインして視聴する
+                            </a>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        );
     }
 
     const currentIndex = allLessons.findIndex(l => l.id === currentLesson.id);
@@ -89,17 +151,6 @@ export default async function PublicViewPage({
         });
         isCompleted = !!progressRecord?.completed;
     }
-
-    // Prepare modules data for client component
-    const modulesData = modulesWithLessons.map(m => ({
-        id: m.id,
-        title: m.title,
-        lessons: m.lessons.map(l => ({
-            id: l.id,
-            title: l.title,
-            type: l.type
-        }))
-    }));
 
     return (
         <div className={styles.container}>
