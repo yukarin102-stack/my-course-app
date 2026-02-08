@@ -1,9 +1,10 @@
 import { db } from "@/lib/db";
-import { users, enrollments, courses, progress, lessons } from "@/db/schema";
-import { eq, and } from "drizzle-orm";
+import { users, enrollments, courses } from "@/db/schema";
+import { eq } from "drizzle-orm";
 import Link from "next/link";
 import styles from "../../courses/AdminCourses.module.css";
-import { ArrowLeft, Mail, Calendar, BookOpen } from "lucide-react";
+import { ArrowLeft, Mail, Calendar } from "lucide-react";
+import EnrollmentManager from "@/components/admin/EnrollmentManager";
 
 export default async function AdminUserDetailPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
@@ -16,18 +17,15 @@ export default async function AdminUserDetailPage({ params }: { params: Promise<
         return <div>User not found</div>;
     }
 
-    // Fetch Enrollments with Course Titles
-    const userEnrollments = await db.select({
-        courseId: courses.id,
-        courseTitle: courses.title,
-        purchasedAt: enrollments.purchasedAt,
-    })
+    // Fetch all courses
+    const allCourses = await db.select({ id: courses.id, title: courses.title }).from(courses);
+
+    // Fetch user enrollments
+    const userEnrollments = await db.select({ courseId: enrollments.courseId })
         .from(enrollments)
-        .innerJoin(courses, eq(enrollments.courseId, courses.id))
         .where(eq(enrollments.userId, id));
 
-    // Calculate progress for each course is tricky without aggregation, doing simplistic per-course logic
-    // Actually, let's just show raw items for now or simple "status"
+    const enrolledCourseIds = userEnrollments.map(e => e.courseId);
 
     return (
         <div>
@@ -42,26 +40,15 @@ export default async function AdminUserDetailPage({ params }: { params: Promise<
                 </div>
             </div>
 
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1rem', borderBottom: '2px solid #f3f4f6', paddingBottom: '0.5rem' }}>
-                受講状況
-            </h2>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem' }}>
-                {userEnrollments.map(enrol => (
-                    <div key={enrol.courseId} style={{ backgroundColor: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
-                        <h3 style={{ fontWeight: 'bold', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <BookOpen size={18} color="#2563eb" />
-                            {enrol.courseTitle}
-                        </h3>
-                        <p style={{ fontSize: '0.875rem', color: '#6b7280' }}>
-                            受講開始日: {enrol.purchasedAt?.toLocaleDateString()}
-                        </p>
-                        {/* Future: Add progress bar here by querying `progress` table */}
-                    </div>
-                ))}
-                {userEnrollments.length === 0 && (
-                    <p style={{ color: '#6b7280' }}>受講中のコースはありません。</p>
-                )}
+            <div style={{ backgroundColor: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+                <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1.5rem', borderBottom: '2px solid #f3f4f6', paddingBottom: '0.5rem' }}>
+                    講座登録管理
+                </h2>
+                <EnrollmentManager
+                    userId={id}
+                    courses={allCourses}
+                    enrolledCourseIds={enrolledCourseIds}
+                />
             </div>
         </div>
     );

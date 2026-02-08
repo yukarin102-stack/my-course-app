@@ -40,6 +40,8 @@ export const lessons = sqliteTable("lessons", {
     title: text("title").notNull(),
     videoUrl: text("video_url"),
     description: text("description"), // text content
+    attachmentUrl: text("attachment_url"), // reference materials (PDF, Excel, etc.)
+    attachmentName: text("attachment_name"), // display name for the attachment
     type: text("type", { enum: ["video", "quiz", "text", "live", "assignment"] }).default("video").notNull(),
     order: integer("order").notNull(),
     isFree: integer("is_free", { mode: "boolean" }).default(false), // for lead magnet/preview

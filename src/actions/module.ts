@@ -53,3 +53,25 @@ export async function deleteModule(moduleId: string) {
         return { error: "削除中にエラーが発生しました" };
     }
 }
+
+export async function updateModule(moduleId: string, title: string) {
+    const session = await auth();
+    if (!session?.user?.id) return { error: "権限がありません" };
+
+    if (!title.trim()) return { error: "タイトルは必須です" };
+
+    try {
+        const mod = await db.query.modules.findFirst({
+            where: eq(modules.id, moduleId),
+            columns: { courseId: true }
+        });
+
+        await db.update(modules).set({ title: title.trim() }).where(eq(modules.id, moduleId));
+
+        if (mod) revalidatePath(`/admin/courses/${mod.courseId}`);
+        return { success: true };
+    } catch (error) {
+        console.error(error);
+        return { error: "更新中にエラーが発生しました" };
+    }
+}

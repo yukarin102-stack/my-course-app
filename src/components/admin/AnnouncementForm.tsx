@@ -6,7 +6,7 @@ import { MessageSquare, Video } from "lucide-react";
 
 const initialState = { success: false, error: "" };
 
-export default function AnnouncementForm({ courseId }: { courseId: string }) {
+export default function AnnouncementForm({ courseId }: { courseId?: string }) {
     // @ts-ignore
     const [state, formAction] = useActionState(createCourseAnnouncement, initialState);
     const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +43,7 @@ export default function AnnouncementForm({ courseId }: { courseId: string }) {
             </div>
 
             <form action={formAction}>
-                <input type="hidden" name="courseId" value={courseId} />
+                <input type="hidden" name="courseId" value={courseId || ""} />
 
                 <div style={{ marginBottom: '1rem' }}>
                     <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: 'bold' }}>タイトル</label>

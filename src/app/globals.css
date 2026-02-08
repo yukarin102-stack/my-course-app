@@ -26,8 +26,21 @@ a {
   text-decoration: none;
 }
 
-button {
+button,
+input,
+textarea,
+select {
   font-family: inherit;
+}
+
+b,
+strong {
+  font-weight: bold !important;
+  font-weight: 700 !important;
+}
+
+u {
+  text-decoration: underline !important;
 }
 
 .course-card:hover {

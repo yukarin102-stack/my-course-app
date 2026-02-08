@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { signIn } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 
@@ -8,7 +8,7 @@ import { useSearchParams } from "next/navigation";
  * MYASP Auto-Login Page
  * This page handles the actual login and redirect
  */
-export default function MYASPLoginPage() {
+function LoginContent() {
     const searchParams = useSearchParams();
     const userId = searchParams?.get('user_id');
     const redirect = searchParams?.get('redirect') || '/dashboard';
@@ -60,5 +60,13 @@ export default function MYASPLoginPage() {
                 `}</style>
             </div>
         </div>
+    );
+}
+
+export default function MYASPLoginPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <LoginContent />
+        </Suspense>
     );
 }

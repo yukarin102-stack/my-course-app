@@ -7,70 +7,70 @@ import { MYASP_CONFIG } from "@/config/myasp";
 
 const curriculum = [
     {
-        title: "第0章: Youtube成功への土台作り - 戦略とマインドセット",
+        title: "第0章: 学習成功への土台作り - 戦略とマインドセット",
         lessons: [
             { title: "あなただけの「成功」を定義する", type: "video", duration: "10:00" },
-            { title: "「数字の奴隷」にならないためのマインドセット", type: "video", duration: "12:00" },
-            { title: "なぜ、9割の人がYoutubeで挫折するのか？", type: "video", duration: "15:00" },
+            { title: "「手法の奴隷」にならないためのマインドセット", type: "video", duration: "12:00" },
+            { title: "なぜ、9割の人が学習で挫折するのか？", type: "video", duration: "15:00" },
         ],
     },
     {
-        title: "第1章: イメージ戦略｜Youtubeで何を届けたいのか",
+        title: "第1章: 学習戦略｜何を学び、どう活かすか",
         lessons: [
-            { title: "コンセプト設計とブランディング", type: "video", duration: "18:00" },
-            { title: "あなたはどの役？3つの役柄", type: "video", duration: "14:00" },
-            { title: "Youtubeアルゴリズム概論", type: "video", duration: "20:00" },
+            { title: "学習目標の設定とキャリアプラン", type: "video", duration: "18:00" },
+            { title: "あなたはどのタイプ？学習スタイル診断", type: "video", duration: "14:00" },
+            { title: "脳科学に基づいた記憶のメカニズム", type: "video", duration: "20:00" },
         ],
     },
     {
-        title: "第2章: チャンネル成長の基本",
+        title: "第2章: 学習習慣の定着",
         lessons: [
-            { title: "Youtubeの始め方（完全ガイド）", type: "video", duration: "25:00" },
-            { title: "公開前チェックリスト", type: "text", duration: "5分" },
-            { title: "あなたの「好き」を「資産」に変える12の戦略", type: "video", duration: "22:00" },
+            { title: "学習の始め方（完全ガイド）", type: "video", duration: "25:00" },
+            { title: "学習環境チェックリスト", type: "text", duration: "5分" },
+            { title: "あなたの「知識」を「資産」に変える12の習慣", type: "video", duration: "22:00" },
         ],
     },
     {
-        title: "第3章: 「大きな反響」を生み出す企画とコンテンツ制作",
+        title: "第3章: 「深い理解」を生み出すインプット術",
         lessons: [
-            { title: "アイデアが枯渇したあなたを救う秘策", type: "video", duration: "15:00" },
-            { title: "詳細な分析予測：再生数を予測する", type: "video", duration: "18:00" },
-            { title: "Geminiで話題をさらうYoutube台本作成法", type: "video", duration: "20:00" },
-            { title: "VidIQを使ったリサーチ術", type: "video", duration: "12:00" },
-            { title: "競合調査とキーワードリサーチ", type: "video", duration: "16:00" },
+            { title: "集中力が続かないあなたを救うポモドーロテクニック", type: "video", duration: "15:00" },
+            { title: "詳細な分析：理解度を可視化する", type: "video", duration: "18:00" },
+            { title: "AIを活用した効率的な学習リサーチ法", type: "video", duration: "20:00" },
+            { title: "Notionを使った情報整理術", type: "video", duration: "12:00" },
+            { title: "多読と精読の使い分け", type: "video", duration: "16:00" },
         ],
     },
     {
-        title: "第4章: 再生数とクリック率を最大化する技術",
+        title: "第4章: 記憶定着とアウトプットの技術",
         lessons: [
-            { title: "SEOを意識したタイトルの付け方", type: "video", duration: "14:00" },
-            { title: "クリックされやすいサムネイルの法則", type: "video", duration: "18:00" },
-            { title: "再生数を劇的に伸ばす鍵", type: "video", duration: "15:00" },
-            { title: "2026年のSEO最新戦略：AEOとエンティティ最適化", type: "video", duration: "20:00" },
+            { title: "エビングハウスの忘却曲線と復習のタイミング", type: "video", duration: "14:00" },
+            { title: "他人に教えることで学ぶ「ファインマン・テクニック」", type: "video", duration: "18:00" },
+            { title: "学習効果を劇的に高めるテスト効果", type: "video", duration: "15:00" },
+            { title: "2026年の最新学習ツール活用法", type: "video", duration: "20:00" },
         ],
     },
     {
-        title: "第5章: 登録者1000人〜10000人へのロードマップ",
+        title: "第5章: スキル習得から実践へのロードマップ",
         lessons: [
-            { title: "0→1000人の壁を越えるロードマップ", type: "video", duration: "22:00" },
-            { title: "1000人〜10000人までのロードマップ", type: "video", duration: "25:00" },
-            { title: "ショート動画戦略（2026年完全版）", type: "video", duration: "18:00" },
+            { title: "0→1のスキル習得ロードマップ", type: "video", duration: "22:00" },
+            { title: "実務レベルへ引き上げるためのロードマップ", type: "video", duration: "25:00" },
+            { title: "ポートフォリオ作成戦略（2026年完全版）", type: "video", duration: "18:00" },
         ],
     },
     {
-        title: "第6章: データ分析によるチャンネル改善",
+        title: "第6章: 自己成長のデータ分析",
         lessons: [
-            { title: "アナリティクスの見方と活用法", type: "video", duration: "20:00" },
-            { title: "最重要指標「CTR」と「平均視聴時間」", type: "video", duration: "15:00" },
+            { title: "学習ログの記録と振り返り方", type: "video", duration: "20:00" },
+            { title: "最重要指標「学習密度」と「継続率」", type: "video", duration: "15:00" },
             { title: "PDCAサイクル完全ガイド", type: "video", duration: "18:00" },
         ],
     },
     {
-        title: "第7章: プラットフォーム機能とYMYL/E-E-A-T",
+        title: "第7章: 生涯学習とキャリア構築",
         lessons: [
-            { title: "公式ヘルプ活用法", type: "text", duration: "10分" },
-            { title: "YMYLの重要性とE-E-A-T対策", type: "video", duration: "20:00" },
-            { title: "Youtubeの未来予測", type: "video", duration: "15:00" },
+            { title: "学習コミュニティ活用法", type: "text", duration: "10分" },
+            { title: "リスキリングの重要性とキャリア戦略", type: "video", duration: "20:00" },
+            { title: "学習の未来予測：AI時代のスキルセット", type: "video", duration: "15:00" },
         ],
     },
 ];

@@ -58,7 +58,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <main className={styles.main}>
                 <header className={styles.topHeader}>
                     <div className={styles.headerRight}>
-                        <Link href="/" className={styles.viewSiteButton} target="_blank">
+                        <Link href="/dashboard" className={styles.viewSiteButton} target="_blank">
                             <ExternalLink size={16} />
                             サイトを表示
                         </Link>

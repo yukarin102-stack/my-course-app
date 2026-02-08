@@ -7,9 +7,9 @@ export function Footer() {
             <div className={styles.container}>
                 <div className={styles.grid}>
                     <div className={styles.column}>
-                        <h3>Youtube Hacks</h3>
+                        <h3>Study Skills</h3>
                         <p style={{ color: "#aaa", fontSize: "0.9rem", lineHeight: "1.6" }}>
-                            Youtubeノウハウを体系的に学べる<br />
+                            効果的な学習法を体系的に学べる<br />
                             オンライン学習プラットフォーム
                         </p>
                     </div>
@@ -36,7 +36,7 @@ export function Footer() {
                     </div>
                 </div>
                 <div className={styles.copyright}>
-                    &copy; {new Date().getFullYear()} Youtube Hacks. All rights reserved.
+                    &copy; {new Date().getFullYear()} Study Skills. All rights reserved.
                 </div>
             </div>
         </footer>

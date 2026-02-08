@@ -8,14 +8,14 @@ export function Hero() {
             <div className={styles.container}>
 
                 <h1 className={styles.title}>
-                    Youtubeで<br />
+                    Study Skillsで<br />
                     <span className={styles.highlight}>あなたの知識を資産に変える</span><br />
                     最強のロードマップ
                 </h1>
 
                 <p className={styles.description}>
-                    チャンネル登録者数10万人超えのノウハウを体系化。<br />
-                    企画、撮影、編集、そして収益化まで、<br />
+                    500名以上の指導実績を持つノウハウを体系化。<br />
+                    学習計画、実践、継続、そして成果を出すまで、<br />
                     最短距離で成功するためのすべてがここにあります。
                 </p>
 

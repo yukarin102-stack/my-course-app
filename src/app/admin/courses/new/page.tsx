@@ -9,7 +9,7 @@ import Link from "next/link"; // Changed from next/link to allow styling
 
 export default function NewCoursePage() {
     const router = useRouter();
-    const [state, formAction] = useActionState(createCourse, null);
+    const [state, formAction, isPending] = useActionState(createCourse, null);
 
     useEffect(() => {
         if (state?.success && state.courseId) {
@@ -48,7 +48,9 @@ export default function NewCoursePage() {
 
                 <div className={styles.actions}>
                     <Link href="/admin/courses" className={styles.cancelButton}>キャンセル</Link>
-                    <button type="submit" className={styles.submitButton}>作成して編集へ進む</button>
+                    <button type="submit" className={styles.submitButton} disabled={isPending}>
+                        {isPending ? "作成中..." : "作成して編集へ進む"}
+                    </button>
                 </div>
             </form>
         </div>

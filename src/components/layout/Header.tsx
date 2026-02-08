@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Youtube, User, LogOut, Settings } from "lucide-react";
+import { User, LogOut, Settings } from "lucide-react";
 import styles from "./Header.module.css";
 import { useSession, signOut } from "next-auth/react";
 import { useState, useEffect, useRef } from "react";
@@ -27,8 +27,8 @@ export function Header() {
         <header className={styles.header}>
             <div className={styles.container}>
                 <Link href="/" className={styles.logo}>
-                    <Youtube color="red" />
-                    <span>Youtube Hacks</span>
+                    <img src="/logo.png" alt="Study Skills" width={40} height={40} style={{ objectFit: "contain" }} />
+                    <span>Study Skills</span>
                 </Link>
 
                 <nav className={styles.nav}>

@@ -22,13 +22,14 @@ export async function createCourse(prevState: any, formData: FormData) {
 
     const validatedFields = courseSchema.safeParse({
         title: formData.get("title"),
-        description: formData.get("description"),
+        description: formData.get("description")?.toString(),
         price: formData.get("price"),
         published: formData.get("published") === "on",
-        thumbnailUrl: formData.get("thumbnailUrl"),
+        thumbnailUrl: formData.get("thumbnailUrl")?.toString(),
     });
 
     if (!validatedFields.success) {
+        console.error("Validation Error:", validatedFields.error);
         return { error: "入力内容を確認してください" };
     }
 
@@ -84,5 +85,19 @@ export async function updateCourse(id: string, prevState: any, formData: FormDat
     } catch (error) {
         console.error(error);
         return { error: "更新中にエラーが発生しました" };
+    }
+}
+
+export async function deleteCourse(id: string) {
+    const session = await auth();
+    if (!session?.user?.id) return { error: "権限がありません" };
+
+    try {
+        await db.delete(courses).where(eq(courses.id, id));
+        revalidatePath("/admin/courses");
+        return { success: true };
+    } catch (error) {
+        console.error("Delete course error:", error);
+        return { error: "削除中にエラーが発生しました" };
     }
 }

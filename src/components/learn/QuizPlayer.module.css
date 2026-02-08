@@ -2,15 +2,15 @@
     max-width: 800px;
     margin: 0 auto;
     padding: var(--spacing-xl);
-    background-color: #222;
+    background-color: #1e293b;
     border-radius: var(--radius-lg);
-    border: 1px solid #444;
+    border: 1px solid #475569;
 }
 
 .questionCard {
     margin-bottom: var(--spacing-2xl);
     padding-bottom: var(--spacing-xl);
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #334155;
 }
 
 .questionCard:last-child {
@@ -37,7 +37,7 @@
     align-items: center;
     gap: var(--spacing-md);
     padding: var(--spacing-md);
-    background-color: #333;
+    background-color: #334155;
     border: 2px solid transparent;
     border-radius: var(--radius-md);
     cursor: pointer;
@@ -46,7 +46,7 @@
 }
 
 .optionLabel:hover:not(.disabled) {
-    background-color: #444;
+    background-color: #475569;
 }
 
 .optionLabel.selected {
@@ -94,7 +94,7 @@
 .results {
     margin-top: var(--spacing-lg);
     padding: var(--spacing-lg);
-    background-color: #333;
+    background-color: #334155;
     border-radius: var(--radius-md);
     text-align: center;
 }

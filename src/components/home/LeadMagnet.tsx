@@ -42,17 +42,17 @@ export function LeadMagnet() {
                     <div className={styles.textContent}>
                         <div className={styles.badge}>無料プレゼント</div>
                         <h2 className={styles.title}>
-                            「Youtube収益化の教科書」<br />
+                            「学習効率最大化の教科書」<br />
                             完全版PDFを無料配布中
                         </h2>
                         <p className={styles.description}>
-                            累計1万回以上ダウンロードされた、これからYoutubeを始める人のためのバイブル。<br />
-                            チャンネル設計から機材選び、最初の1000人登録までのロードマップを70ページ超のPDFにまとめました。
+                            累計1万回以上ダウンロードされた、これから学習を本格化する人のためのバイブル。<br />
+                            目標設定から学習計画、記憶の定着メカニズムまでを70ページ超のPDFにまとめました。
                         </p>
                         <ul className={styles.benefits}>
-                            <li><CheckCircle size={20} className={styles.icon} /> 初心者が陥りやすい5つの罠</li>
-                            <li><CheckCircle size={20} className={styles.icon} /> 伸びるジャンル選定チェックシート</li>
-                            <li><CheckCircle size={20} className={styles.icon} /> スマホだけで始める撮影・編集ガイド</li>
+                            <li><CheckCircle size={20} className={styles.icon} /> 挫折しやすい3つのポイントと対策</li>
+                            <li><CheckCircle size={20} className={styles.icon} /> 自分に合った学習スタイル診断</li>
+                            <li><CheckCircle size={20} className={styles.icon} /> 科学的に正しい復習タイミング完全ガイド</li>
                         </ul>
                     </div>
 

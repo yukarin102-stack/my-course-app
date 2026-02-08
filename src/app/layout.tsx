@@ -3,8 +3,8 @@ import "./globals.css";
 import { Providers } from "@/components/Providers";
 
 export const metadata: Metadata = {
-  title: "Youtubeノウハウオンライン講座",
-  description: "Youtubeノウハウを学ぶためのオンライン講座プラットフォーム",
+  title: "Study Skills Online Course",
+  description: "効果的な学習スキルを学ぶためのオンライン講座プラットフォーム",
 };
 
 export default function RootLayout({

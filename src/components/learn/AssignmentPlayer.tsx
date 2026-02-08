@@ -35,17 +35,18 @@ export default function AssignmentPlayer({
         <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
             <div style={{ marginBottom: '2rem', paddingBottom: '1rem', borderBottom: '1px solid #333' }}>
                 <h2 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>📑 課題: {title}</h2>
-                <div style={{
-                    color: '#000',
-                    lineHeight: '1.8',
-                    backgroundColor: 'white',
-                    padding: '1.5rem',
-                    borderRadius: '8px',
-                    whiteSpace: 'pre-wrap',
-                    fontFamily: '"Yu Gothic", "YuGothic", sans-serif'
-                }}>
-                    {description}
-                </div>
+                <div
+                    style={{
+                        color: '#000',
+                        lineHeight: '1.8',
+                        backgroundColor: 'white',
+                        padding: '1.5rem',
+                        borderRadius: '8px',
+                        whiteSpace: 'pre-wrap',
+                        fontFamily: '"Yu Gothic", "YuGothic", sans-serif'
+                    }}
+                    dangerouslySetInnerHTML={{ __html: description || '' }}
+                />
             </div>
 
             {submission && (

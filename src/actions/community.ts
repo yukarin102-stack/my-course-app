@@ -15,7 +15,7 @@ export async function createPost(formData: FormData) {
     const courseId = formData.get("courseId") as string;
 
     if (!title || !content || !courseId) {
-        return { error: "入力内容が不足しています。" };
+        return { success: false, error: "入力内容が不足しています。" };
     }
 
     try {
@@ -27,10 +27,10 @@ export async function createPost(formData: FormData) {
         });
 
         revalidatePath(`/courses/${courseId}/community`);
-        return { success: true };
+        return { success: true, error: "" };
     } catch (error) {
         console.error("Failed to create post:", error);
-        return { error: "投稿の作成に失敗しました。" };
+        return { success: false, error: "投稿の作成に失敗しました。" };
     }
 }
 

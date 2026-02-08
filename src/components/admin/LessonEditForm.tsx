@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useRef, useState } from "react";
 import { updateLesson } from "@/actions/lesson";
 
 type Lesson = {
@@ -8,6 +8,8 @@ type Lesson = {
     title: string;
     description: string | null;
     videoUrl: string | null;
+    attachmentUrl: string | null;
+    attachmentName: string | null;
     type: "video" | "text" | "quiz" | "live" | "assignment";
     order: number;
     isFree: boolean | null;
@@ -16,6 +18,8 @@ type Lesson = {
 export default function LessonEditForm({ lesson, courseId }: { lesson: Lesson, courseId: string }) {
     const updateLessonWithId = updateLesson.bind(null, lesson.id);
     const [state, formAction] = useActionState(updateLessonWithId, null);
+    const descriptionRef = useRef<HTMLTextAreaElement>(null);
+    const [currentType, setCurrentType] = useState(lesson.type);
 
     return (
         <div style={{ backgroundColor: 'white', padding: '2rem', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
@@ -39,6 +43,7 @@ export default function LessonEditForm({ lesson, courseId }: { lesson: Lesson, c
                     <select
                         name="type"
                         defaultValue={lesson.type}
+                        onChange={(e) => setCurrentType(e.target.value as any)}
                         style={{ width: '100%', padding: '0.75rem', border: '1px solid #d1d5db', borderRadius: '4px', fontFamily: '"Yu Gothic", "YuGothic", sans-serif' }}
                     >
                         <option value="video">動画</option>
@@ -49,7 +54,7 @@ export default function LessonEditForm({ lesson, courseId }: { lesson: Lesson, c
                     </select>
                 </div>
 
-                {(lesson.type === 'video' || lesson.type === 'live') && (
+                {(currentType === 'video' || currentType === 'live') && (
                     <div style={{ marginBottom: '1.5rem' }}>
                         <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '0.5rem' }}>
                             動画URL または YouTube ID
@@ -72,12 +77,67 @@ export default function LessonEditForm({ lesson, courseId }: { lesson: Lesson, c
                     </div>
                 )}
 
-                {lesson.type === 'text' && (
+                {currentType === 'text' && (
                     <div style={{ marginBottom: '1.5rem' }}>
                         <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '0.5rem' }}>
                             テキスト内容
                         </label>
+                        <div style={{ marginBottom: '0.5rem', display: 'flex', gap: '0.5rem' }}>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    const textarea = descriptionRef.current;
+                                    if (!textarea) return;
+                                    const start = textarea.selectionStart;
+                                    const end = textarea.selectionEnd;
+                                    const text = textarea.value;
+                                    const selectedText = text.substring(start, end);
+                                    const newText = text.substring(0, start) + '<b>' + selectedText + '</b>' + text.substring(end);
+                                    textarea.value = newText;
+                                    textarea.focus();
+                                    textarea.setSelectionRange(start + 3, end + 3);
+                                }}
+                                style={{
+                                    padding: '0.25rem 0.75rem',
+                                    border: '1px solid #d1d5db',
+                                    borderRadius: '4px',
+                                    backgroundColor: '#fff',
+                                    fontWeight: 'bold',
+                                    cursor: 'pointer'
+                                }}
+                                title="太字"
+                            >
+                                B
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    const textarea = descriptionRef.current;
+                                    if (!textarea) return;
+                                    const start = textarea.selectionStart;
+                                    const end = textarea.selectionEnd;
+                                    const text = textarea.value;
+                                    const selectedText = text.substring(start, end);
+                                    const newText = text.substring(0, start) + '<u>' + selectedText + '</u>' + text.substring(end);
+                                    textarea.value = newText;
+                                    textarea.focus();
+                                    textarea.setSelectionRange(start + 3, end + 3);
+                                }}
+                                style={{
+                                    padding: '0.25rem 0.75rem',
+                                    border: '1px solid #d1d5db',
+                                    borderRadius: '4px',
+                                    backgroundColor: '#fff',
+                                    textDecoration: 'underline',
+                                    cursor: 'pointer'
+                                }}
+                                title="下線"
+                            >
+                                U
+                            </button>
+                        </div>
                         <textarea
+                            ref={descriptionRef}
                             name="description"
                             defaultValue={lesson.description || ''}
                             rows={15}
@@ -85,23 +145,81 @@ export default function LessonEditForm({ lesson, courseId }: { lesson: Lesson, c
                             style={{ width: '100%', padding: '0.75rem', border: '1px solid #d1d5db', borderRadius: '4px', fontFamily: '"Yu Gothic", "YuGothic", sans-serif' }}
                         />
                         <p style={{ fontSize: '0.875rem', color: '#6b7280', marginTop: '0.5rem' }}>
-                            改行やマークダウン記法も使用できます
+                            ボタンを押すとタグ（&lt;b&gt;など）が挿入されます。実際の表示で太字になります。
                         </p>
                     </div>
                 )}
 
-                {lesson.type === 'assignment' && (
+                {currentType === 'assignment' && (
                     <div style={{ marginBottom: '1.5rem' }}>
                         <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '0.5rem' }}>
                             課題の説明
                         </label>
+                        <div style={{ marginBottom: '0.5rem', display: 'flex', gap: '0.5rem' }}>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    const textarea = descriptionRef.current;
+                                    if (!textarea) return;
+                                    const start = textarea.selectionStart;
+                                    const end = textarea.selectionEnd;
+                                    const text = textarea.value;
+                                    const selectedText = text.substring(start, end);
+                                    const newText = text.substring(0, start) + '<b>' + selectedText + '</b>' + text.substring(end);
+                                    textarea.value = newText;
+                                    textarea.focus();
+                                    textarea.setSelectionRange(start + 3, end + 3);
+                                }}
+                                style={{
+                                    padding: '0.25rem 0.75rem',
+                                    border: '1px solid #d1d5db',
+                                    borderRadius: '4px',
+                                    backgroundColor: '#fff',
+                                    fontWeight: 'bold',
+                                    cursor: 'pointer'
+                                }}
+                                title="太字"
+                            >
+                                B
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    const textarea = descriptionRef.current;
+                                    if (!textarea) return;
+                                    const start = textarea.selectionStart;
+                                    const end = textarea.selectionEnd;
+                                    const text = textarea.value;
+                                    const selectedText = text.substring(start, end);
+                                    const newText = text.substring(0, start) + '<u>' + selectedText + '</u>' + text.substring(end);
+                                    textarea.value = newText;
+                                    textarea.focus();
+                                    textarea.setSelectionRange(start + 3, end + 3);
+                                }}
+                                style={{
+                                    padding: '0.25rem 0.75rem',
+                                    border: '1px solid #d1d5db',
+                                    borderRadius: '4px',
+                                    backgroundColor: '#fff',
+                                    textDecoration: 'underline',
+                                    cursor: 'pointer'
+                                }}
+                                title="下線"
+                            >
+                                U
+                            </button>
+                        </div>
                         <textarea
+                            ref={descriptionRef}
                             name="description"
                             defaultValue={lesson.description || ''}
                             rows={10}
                             placeholder="課題の内容、提出方法、評価基準などを記載してください..."
                             style={{ width: '100%', padding: '0.75rem', border: '1px solid #d1d5db', borderRadius: '4px' }}
                         />
+                        <p style={{ fontSize: '0.875rem', color: '#6b7280', marginTop: '0.5rem' }}>
+                            ボタンを押すとタグ（&lt;b&gt;など）が挿入されます。実際の表示で太字になります。
+                        </p>
                     </div>
                 )}
 
@@ -122,6 +240,40 @@ export default function LessonEditForm({ lesson, courseId }: { lesson: Lesson, c
                         min={1}
                         style={{ width: '100px', padding: '0.75rem', border: '1px solid #d1d5db', borderRadius: '4px' }}
                     />
+                </div>
+
+                {/* 参考資料セクション（全タイプ共通） */}
+                <div style={{ marginBottom: '1.5rem', padding: '1.5rem', backgroundColor: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                    <h3 style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '1rem', color: '#1e3a5f' }}>📎 参考資料（任意）</h3>
+
+                    <div style={{ marginBottom: '1rem' }}>
+                        <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: '#374151' }}>
+                            ファイル名（表示用）
+                        </label>
+                        <input
+                            type="text"
+                            name="attachmentName"
+                            defaultValue={lesson.attachmentName || ''}
+                            placeholder="例: 講義スライド.pdf、演習問題.xlsx"
+                            style={{ width: '100%', padding: '0.75rem', border: '1px solid #d1d5db', borderRadius: '4px', fontFamily: '"Yu Gothic", "YuGothic", sans-serif' }}
+                        />
+                    </div>
+
+                    <div style={{ marginBottom: '0.5rem' }}>
+                        <label style={{ display: 'block', fontWeight: '600', marginBottom: '0.5rem', color: '#374151' }}>
+                            ファイルURL（Google Drive / Dropbox 等）
+                        </label>
+                        <input
+                            type="text"
+                            name="attachmentUrl"
+                            defaultValue={lesson.attachmentUrl || ''}
+                            placeholder="例: https://drive.google.com/file/d/.../view"
+                            style={{ width: '100%', padding: '0.75rem', border: '1px solid #d1d5db', borderRadius: '4px', fontFamily: '"Yu Gothic", "YuGothic", sans-serif' }}
+                        />
+                        <p style={{ fontSize: '0.875rem', color: '#6b7280', marginTop: '0.5rem' }}>
+                            Google Drive、Dropbox、OneDrive等のファイル共有リンクを入力してください。生徒がダウンロードできるようになります。
+                        </p>
+                    </div>
                 </div>
 
                 <div style={{ marginBottom: '1.5rem' }}>

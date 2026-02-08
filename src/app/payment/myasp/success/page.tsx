@@ -63,7 +63,7 @@ export default async function MYASPSuccessPage({
         if (existingTransaction) {
             // 既に処理済みの場合は、既存のユーザーIDを使用
             console.log('[MYASP Success] Transaction already processed:', transactionId);
-            userId = existingTransaction.userId;
+            userId = existingTransaction.userId!;
         } else {
             // 2. ユーザー作成/取得
             let user = await db.select()

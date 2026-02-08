@@ -1,22 +1,23 @@
 :root {
   /* Typography */
   --font-primary: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
-  
+
   /* Colors - Light Theme (Default) */
   --color-background: #ffffff;
   --color-foreground: #1a1a1a;
-  
-  --color-primary: #0066cc; /* Example logic blue */
-  --color-primary-hover: #0052a3;
-  
-  --color-secondary: #f0f0f0;
-  --color-secondary-hover: #e0e0e0;
 
-  --color-accent: #ff9900;
-  
-  --color-border: #e0e0e0;
+  --color-primary: #0066cc;
+  /* Example logic blue */
+  --color-primary-hover: #0052a3;
+
+  --color-secondary: #f0f9ff;
+  --color-secondary-hover: #e0f2fe;
+
+  --color-accent: #0ea5e9;
+
+  --color-border: #cbd5e1;
   --color-error: #d32f2f;
-  
+
   /* Spacing */
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
@@ -24,7 +25,7 @@
   --spacing-lg: 1.5rem;
   --spacing-xl: 2rem;
   --spacing-2xl: 3rem;
-  
+
   /* Radius */
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
@@ -33,15 +34,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: #121212;
-    --color-foreground: #ededed;
-    
-    --color-primary: #1a73e8;
-    --color-primary-hover: #1359b5;
-    
-    --color-secondary: #2a2a2a;
-    --color-secondary-hover: #3a3a3a;
-    
-    --color-border: #333333;
+    --color-background: #0f172a;
+    --color-foreground: #f1f5f9;
+
+    --color-primary: #3b82f6;
+    --color-primary-hover: #2563eb;
+
+    --color-secondary: #1e293b;
+    --color-secondary-hover: #334155;
+
+    --color-border: #334155;
   }
 }

@@ -2,6 +2,7 @@ import { db } from "@/lib/db";
 import { courses } from "@/db/schema";
 import Link from "next/link";
 import { Plus } from "lucide-react";
+import DeleteCourseButton from "@/components/admin/DeleteCourseButton";
 
 export default async function AdminCoursesPage() {
     const allCourses = await db.select().from(courses);
@@ -52,13 +53,14 @@ export default async function AdminCoursesPage() {
                                         {course.published ? '公開中' : '下書き'}
                                     </span>
                                 </td>
-                                <td style={{ padding: '1rem', textAlign: 'right' }}>
-                                    <Link href={`/admin/courses/${course.id}`} style={{ color: 'var(--color-primary)', fontWeight: 'bold', marginRight: '1rem' }}>
+                                <td style={{ padding: '1rem', textAlign: 'right', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '1rem' }}>
+                                    <Link href={`/admin/courses/${course.id}`} style={{ color: 'var(--color-primary)', fontWeight: 'bold' }}>
                                         編集
                                     </Link>
-                                    <Link href={`/courses/${course.id}`} target="_blank" style={{ color: '#666' }}>
-                                        プレビュー
+                                    <Link href={`/view/${course.id}`} target="_blank" style={{ color: '#22c55e' }}>
+                                        生徒画面
                                     </Link>
+                                    <DeleteCourseButton courseId={course.id} />
                                 </td>
                             </tr>
                         ))}

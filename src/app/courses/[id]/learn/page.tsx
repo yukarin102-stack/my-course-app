@@ -13,7 +13,9 @@ import AssignmentPlayer from "@/components/learn/AssignmentPlayer";
 import CourseSidebar from "@/components/course/CourseSidebar";
 import CourseHome from "@/components/learn/CourseHome";
 import { announcements } from "@/db/schema";
-import { desc } from "drizzle-orm";
+import { desc, type InferSelectModel } from "drizzle-orm";
+
+type Announcement = InferSelectModel<typeof announcements>;
 
 export default async function LearnPage({
     params,
@@ -75,7 +77,7 @@ export default async function LearnPage({
 
     // Announcement data (needed for home view)
     // Only fetch if no lessonId or explicitly home
-    let announcementsList = [];
+    let announcementsList: Announcement[] = [];
     if (!lessonId) {
         announcementsList = await db.query.announcements.findMany({
             where: eq(announcements.courseId, id),
@@ -233,15 +235,16 @@ export default async function LearnPage({
                             )}
 
                             {currentLesson.type !== 'assignment' && (
-                                <div style={{
-                                    lineHeight: '1.8',
-                                    color: '#000',
-                                    marginBottom: '2rem',
-                                    fontFamily: '"Yu Gothic", "YuGothic", sans-serif',
-                                    whiteSpace: 'pre-wrap'
-                                }}>
-                                    {currentLesson.description}
-                                </div>
+                                <div
+                                    style={{
+                                        lineHeight: '1.8',
+                                        color: '#000',
+                                        marginBottom: '2rem',
+                                        fontFamily: '"Yu Gothic", "YuGothic", sans-serif',
+                                        whiteSpace: 'pre-wrap'
+                                    }}
+                                    dangerouslySetInnerHTML={{ __html: currentLesson.description || '' }}
+                                />
                             )}
 
                             {currentLesson.type === 'quiz' && quizData && (

@@ -11,6 +11,8 @@ const lessonSchema = z.object({
     title: z.string().min(1, "タイトルは必須です"),
     type: z.enum(["video", "text", "quiz", "live", "assignment"]),
     videoUrl: z.string().optional(),
+    attachmentUrl: z.string().optional(),
+    attachmentName: z.string().optional(),
     description: z.string().optional(),
     moduleId: z.string().min(1),
     courseId: z.string().min(1),
@@ -24,6 +26,8 @@ export async function createLesson(prevState: any, formData: FormData) {
         title: formData.get("title"),
         type: formData.get("type"),
         videoUrl: formData.get("videoUrl"),
+        attachmentUrl: formData.get("attachmentUrl"),
+        attachmentName: formData.get("attachmentName"),
         description: formData.get("description"),
         moduleId: formData.get("moduleId"),
         courseId: formData.get("courseId"),
@@ -45,6 +49,8 @@ export async function createLesson(prevState: any, formData: FormData) {
             title: parsed.data.title,
             type: parsed.data.type,
             videoUrl: parsed.data.videoUrl,
+            attachmentUrl: parsed.data.attachmentUrl,
+            attachmentName: parsed.data.attachmentName,
             description: parsed.data.description,
             moduleId: parsed.data.moduleId,
             order,
@@ -67,6 +73,8 @@ export async function updateLesson(lessonId: string, prevState: any, formData: F
     const title = formData.get("title") as string;
     const description = formData.get("description") as string;
     const videoUrl = formData.get("videoUrl") as string;
+    const attachmentUrl = formData.get("attachmentUrl") as string;
+    const attachmentName = formData.get("attachmentName") as string;
     const order = parseInt(formData.get("order") as string);
     const isFree = formData.get("isFree") === "on";
     const type = formData.get("type") as string;
@@ -81,6 +89,8 @@ export async function updateLesson(lessonId: string, prevState: any, formData: F
                 title,
                 description: description || null,
                 videoUrl: videoUrl || null,
+                attachmentUrl: attachmentUrl || null,
+                attachmentName: attachmentName || null,
                 order,
                 isFree,
                 type: type as any,
