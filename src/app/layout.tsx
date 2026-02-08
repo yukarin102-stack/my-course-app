@@ -3,7 +3,7 @@ import "./globals.css";
 import { Providers } from "@/components/Providers";
 
 export const metadata: Metadata = {
-  title: "Study Skills Online Course",
+  title: "Study Skills",
   description: "効果的な学習スキルを学ぶためのオンライン講座プラットフォーム",
 };
 
