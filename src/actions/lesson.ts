@@ -97,6 +97,15 @@ export async function updateLesson(lessonId: string, prevState: any, formData: F
             })
             .where(eq(lessons.id, lessonId));
 
+        // Get courseId to revalidate the learn page
+        const updatedLesson = await db.select().from(lessons).where(eq(lessons.id, lessonId)).get();
+        if (updatedLesson) {
+            const module = await db.select().from(modules).where(eq(modules.id, updatedLesson.moduleId)).get();
+            if (module) {
+                revalidatePath(`/courses/${module.courseId}/learn`);
+            }
+        }
+
         revalidatePath(`/admin/courses`);
         return { success: true };
     } catch (error) {

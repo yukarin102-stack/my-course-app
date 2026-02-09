@@ -293,27 +293,38 @@ export default async function LearnPage({
                             {/* 参考資料ダウンロード */}
                             {currentLesson.attachmentUrl && (() => {
                                 const fileName = currentLesson.attachmentName || currentLesson.attachmentUrl;
+                                // 拡張子が取れない場合もあるので、URLからも判定する
+                                const url = currentLesson.attachmentUrl || '';
                                 const ext = fileName.toLowerCase().split('.').pop() || '';
 
                                 let icon = '📄';
                                 let bgColor = '#6b7280';
                                 let label = 'ファイル';
 
-                                if (['pdf'].includes(ext)) {
+                                const isPdf = ['pdf'].includes(ext) || url.includes('.pdf');
+                                const isSheet = ['xlsx', 'xls', 'csv'].includes(ext) || url.includes('spreadsheet') || url.includes('excel') || url.includes('.xlsx');
+                                const isDoc = ['docx', 'doc'].includes(ext) || url.includes('document') || url.includes('word') || url.includes('.docx');
+                                const isSlide = ['pptx', 'ppt'].includes(ext) || url.includes('presentation') || url.includes('powerpoint') || url.includes('.pptx');
+                                const isZip = ['zip', 'rar', '7z'].includes(ext) || url.includes('.zip');
+                                const isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(ext) || url.includes('image');
+                                const isVideo = ['mp4', 'mov', 'avi'].includes(ext);
+                                const isAudio = ['mp3', 'wav', 'm4a'].includes(ext);
+
+                                if (isPdf) {
                                     icon = '📕'; bgColor = '#dc2626'; label = 'PDF';
-                                } else if (['xlsx', 'xls', 'csv'].includes(ext)) {
-                                    icon = '📊'; bgColor = '#16a34a'; label = 'Excel';
-                                } else if (['docx', 'doc'].includes(ext)) {
-                                    icon = '📝'; bgColor = '#2563eb'; label = 'Word';
-                                } else if (['pptx', 'ppt'].includes(ext)) {
-                                    icon = '📽️'; bgColor = '#ea580c'; label = 'PowerPoint';
-                                } else if (['zip', 'rar', '7z'].includes(ext)) {
+                                } else if (isSheet) {
+                                    icon = '📊'; bgColor = '#16a34a'; label = 'Excel/Sheet';
+                                } else if (isDoc) {
+                                    icon = '📝'; bgColor = '#2563eb'; label = 'Word/Doc';
+                                } else if (isSlide) {
+                                    icon = '📽️'; bgColor = '#ea580c'; label = 'Slide';
+                                } else if (isZip) {
                                     icon = '📦'; bgColor = '#7c3aed'; label = '圧縮ファイル';
-                                } else if (['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(ext)) {
+                                } else if (isImage) {
                                     icon = '🖼️'; bgColor = '#0891b2'; label = '画像';
-                                } else if (['mp4', 'mov', 'avi'].includes(ext)) {
+                                } else if (isVideo) {
                                     icon = '🎬'; bgColor = '#be185d'; label = '動画';
-                                } else if (['mp3', 'wav', 'm4a'].includes(ext)) {
+                                } else if (isAudio) {
                                     icon = '🎵'; bgColor = '#9333ea'; label = '音声';
                                 }
 
