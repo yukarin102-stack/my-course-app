@@ -391,6 +391,16 @@ export default async function LearnPage({
                                 );
                             })()}
 
+
+                            {/* Admin Debug Info */}
+                            {isAdmin && (
+                                <div style={{ margin: '1rem', padding: '1rem', background: '#fef3c7', border: '1px solid #d97706', borderRadius: '4px', fontSize: '0.8rem', color: '#92400e' }}>
+                                    <strong>⚠️ Admin Debug:</strong><br />
+                                    attachmentUrl: {currentLesson.attachmentUrl ? `"${currentLesson.attachmentUrl}"` : "null/empty"}<br />
+                                    attachmentName: {currentLesson.attachmentName ? `"${currentLesson.attachmentName}"` : "null/empty"}<br />
+                                    type: {currentLesson.type}
+                                </div>
+                            )}
                             <div className={styles.navigationButtons}>
                                 {prevLesson ? (
                                     <Link href={`/courses/${id}/learn?lessonId=${prevLesson.id}`}>
@@ -422,9 +432,7 @@ export default async function LearnPage({
                                 )}
                             </div>
                         </div>
-                    </>
-                )}
-            </main>
+                    </main>
         </div>
     );
 }
