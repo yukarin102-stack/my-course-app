@@ -4,10 +4,10 @@
     border-right: 1px solid #333;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    position: sticky;
-    top: 0;
+    height: 100%;
+    /* position: sticky was causing issues within the fixed container */
     overflow-y: hidden;
+    min-height: 0;
 }
 
 .sidebarHeader {
@@ -54,6 +54,7 @@
 .moduleList {
     flex: 1;
     overflow-y: auto;
+    min-height: 0;
 }
 
 .moduleItem {
