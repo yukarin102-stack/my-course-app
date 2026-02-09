@@ -9,7 +9,10 @@ export async function authenticate(
 ) {
     try {
         const data = Object.fromEntries(formData);
-        await signIn("credentials", { ...data, redirectTo: "/dashboard" });
+        const callbackUrl = formData.get("callbackUrl") as string || "/dashboard";
+        // Avoid redirect loop if callbackUrl is login
+        const redirectTo = callbackUrl.includes("/login") ? "/dashboard" : callbackUrl;
+        await signIn("credentials", { ...data, redirectTo });
     } catch (error) {
         if (error instanceof AuthError) {
             switch (error.type) {

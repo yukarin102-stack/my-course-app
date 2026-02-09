@@ -56,6 +56,7 @@ function LoginForm() {
                 {autoLoginError && <div className={styles.error}>{autoLoginError}</div>}
 
                 <form action={dispatch} className={styles.form}>
+                    <input type="hidden" name="callbackUrl" value={callbackUrl || ""} />
                     <div className={styles.inputGroup}>
                         <label htmlFor="email" className={styles.label}>メールアドレス</label>
                         <input id="email" name="email" type="email" required className={styles.input} placeholder="your@email.com" />
