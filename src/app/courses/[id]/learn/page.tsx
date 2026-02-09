@@ -251,6 +251,16 @@ export default async function LearnPage({
                                 <h1 className={styles.lessonTitle}>{currentLesson.title}</h1>
                             )}
 
+                            {isAdmin && (
+                                <div style={{ padding: '10px', margin: '10px 0', backgroundColor: '#fff3cd', color: '#856404', border: '1px solid #ffeeba', borderRadius: '4px' }}>
+                                    <strong>Debug Info:</strong><br />
+                                    ID: {currentLesson.id}<br />
+                                    Type: {currentLesson.type}<br />
+                                    AttachmentURL: {currentLesson.attachmentUrl ? `"${currentLesson.attachmentUrl}"` : "NULL/EMPTY"}<br />
+                                    AttachmentName: {currentLesson.attachmentName || "NULL/EMPTY"}
+                                </div>
+                            )}
+
                             {currentLesson.type !== 'assignment' && (
                                 <div
                                     style={{
