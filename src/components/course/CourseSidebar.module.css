@@ -10,25 +10,30 @@
     display: block !important;
     /* No flex needed for this approach */
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+    scrollbar-width: auto;
+    scrollbar-color: #2563eb #1a1a1a;
 }
 
+/* Chrome, Edge, and Safari */
 .sidebar::-webkit-scrollbar {
-    width: 6px;
+    width: 12px;
 }
 
 .sidebar::-webkit-scrollbar-track {
-    background: transparent;
+    background: #1a1a1a;
+    border-left: 1px solid #333;
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
+    background: #2563eb;
+    /* Primary Blue for consistency */
+    border-radius: 6px;
+    border: 3px solid #1a1a1a;
 }
 
 .sidebar::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: #3b82f6;
+    /* Lighter blue on hover for dark theme */
 }
 
 .stickyHeaderArea {
