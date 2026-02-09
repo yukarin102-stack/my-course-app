@@ -2,19 +2,19 @@
     width: 350px;
     background-color: #1a1a1a;
     border-right: 1px solid #333;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    max-height: 100vh;
-    overflow: hidden;
-    flex-shrink: 0;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
 }
 
 .sidebarHeader {
     padding: var(--spacing-lg, 1.5rem);
     border-bottom: 1px solid #333;
     background-color: #1a1a1a;
-    flex-shrink: 0;
+    flex-shrink: 0 !important;
 }
 
 .courseTitle {
@@ -28,7 +28,7 @@
 .navigationSection {
     border-bottom: 1px solid #333;
     background-color: #222;
-    flex-shrink: 0;
+    flex-shrink: 0 !important;
 }
 
 .navLink {
@@ -53,15 +53,14 @@
 }
 
 .moduleList {
-    flex: 1;
+    flex: 1 !important;
     /* Take remaining space in flex container */
-    overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-    height: 100%;
-    min-height: 0;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    min-height: 0 !important;
     /* Important fix for flex child overflow */
-    padding-bottom: 5rem;
+    padding-bottom: 8rem;
     /* Ensure last items aren't cut off */
 }
 

@@ -8,8 +8,16 @@
 
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* Prevent whole page from scrolling if we want app-like feel */
+}
+
+/* Allow scrolling on normal pages but not the ones with fixed sidebars */
+body.scrollable {
+  overflow: auto;
 }
 
 body {

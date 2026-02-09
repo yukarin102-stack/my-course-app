@@ -51,11 +51,11 @@ export default function PublicSidebar({ courseId, courseTitle, modules, currentL
     };
 
     return (
-        <aside className={styles.sidebar} style={{ position: 'relative', height: '100vh', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-            <div className={styles.sidebarHeader} style={{ position: 'sticky', top: 0, zIndex: 10, flexShrink: 0, backgroundColor: '#dce5ee' }}>
+        <aside className={styles.sidebar}>
+            <div className={styles.sidebarHeader}>
                 <h2 className={styles.courseTitle}>{courseTitle}</h2>
             </div>
-            <nav className={styles.lessonList} style={{ flex: 1, overflowY: 'auto', WebkitOverflowScrolling: 'touch' }}>
+            <nav className={styles.lessonList}>
                 {modules.map((mod) => (
                     <div key={mod.id} className={styles.moduleGroup}>
                         <div className={styles.moduleHeader}>{mod.title}</div>
