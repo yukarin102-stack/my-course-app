@@ -58,7 +58,7 @@ export default async function AdminCoursesPage() {
                                         編集
                                     </Link>
                                     <Link href={`/courses/${course.id}/learn`} target="_blank" style={{ color: '#22c55e' }}>
-                                        プレビュー
+                                        コース確認
                                     </Link>
                                     <DeleteCourseButton courseId={course.id} />
                                 </td>
