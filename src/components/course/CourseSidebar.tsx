@@ -31,15 +31,15 @@ export default function CourseSidebar({ courseId, courseTitle, modules }: Course
     const isCommunity = pathname?.includes("/community");
 
     return (
-        <aside className={styles.sidebar}>
-            <div className={styles.sidebarHeader}>
+        <aside className={styles.sidebar} style={{ position: 'relative', height: '100vh', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+            <div className={styles.sidebarHeader} style={{ position: 'sticky', top: 0, zIndex: 10, flexShrink: 0, backgroundColor: '#1a1a1a' }}>
                 <Link href="/dashboard" style={{ fontSize: '0.8rem', color: '#888', marginBottom: '0.5rem', display: 'block' }}>
                     &larr; ダッシュボードに戻る
                 </Link>
                 <h2 className={styles.courseTitle}>{courseTitle}</h2>
             </div>
 
-            <div className={styles.navigationSection}>
+            <div className={styles.navigationSection} style={{ flexShrink: 0 }}>
                 <Link href={`/courses/${courseId}/learn`} className={`${styles.navLink} ${!isCommunity && !currentLessonId ? styles.active : ''}`}>
                     <Home size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
                     ホーム (お知らせ)
@@ -54,7 +54,7 @@ export default function CourseSidebar({ courseId, courseTitle, modules }: Course
                 </Link>
             </div>
 
-            <div className={styles.moduleList}>
+            <div className={styles.moduleList} style={{ flex: 1, overflowY: 'auto', WebkitOverflowScrolling: 'touch' }}>
                 {modules.map((module) => (
                     <div key={module.id} className={styles.moduleItem}>
                         <div className={styles.moduleTitle}>{module.title}</div>
