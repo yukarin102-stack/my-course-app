@@ -66,7 +66,8 @@ export default async function PublicViewPage({
     }
 
     // Security Check: Only allow free lessons in public view
-    if (!currentLesson.isFree) {
+    const isAdmin = (session?.user as any)?.role === 'admin';
+    if (!currentLesson.isFree && !isAdmin) {
         return (
             <div className={styles.container}>
                 <PublicSidebar
