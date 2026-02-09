@@ -391,7 +391,6 @@ export default async function LearnPage({
                                 );
                             })()}
 
-
                             {/* Admin Debug Info */}
                             {isAdmin && (
                                 <div style={{ margin: '1rem', padding: '1rem', background: '#fef3c7', border: '1px solid #d97706', borderRadius: '4px', fontSize: '0.8rem', color: '#92400e' }}>
@@ -401,6 +400,7 @@ export default async function LearnPage({
                                     type: {currentLesson.type}
                                 </div>
                             )}
+
                             <div className={styles.navigationButtons}>
                                 {prevLesson ? (
                                     <Link href={`/courses/${id}/learn?lessonId=${prevLesson.id}`}>
@@ -432,7 +432,9 @@ export default async function LearnPage({
                                 )}
                             </div>
                         </div>
-                    </main>
+                    </>
+                )}
+            </main>
         </div>
     );
 }
