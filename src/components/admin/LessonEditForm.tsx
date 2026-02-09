@@ -361,20 +361,42 @@ export default function LessonEditForm({ lesson, courseId }: { lesson: Lesson, c
                     </label>
                 </div>
 
-                <button
-                    type="submit"
-                    style={{
-                        padding: '0.75rem 2rem',
-                        backgroundColor: '#2563eb',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: '4px',
-                        fontWeight: 'bold',
-                        cursor: 'pointer'
-                    }}
-                >
-                    変更を保存
-                </button>
+                <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '1rem', alignItems: 'center' }}>
+                    <a
+                        href={`/courses/${courseId}/learn?lessonId=${lesson.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                            padding: '0.75rem 1.5rem',
+                            backgroundColor: '#fff',
+                            color: '#2563eb',
+                            border: '1px solid #2563eb',
+                            borderRadius: '4px',
+                            fontWeight: 'bold',
+                            textDecoration: 'none',
+                            fontSize: '0.9rem',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        プレビュー（別タブ）
+                    </a>
+                    <button
+                        type="submit"
+                        style={{
+                            padding: '0.75rem 2rem',
+                            backgroundColor: '#2563eb',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '4px',
+                            fontWeight: 'bold',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        変更を保存
+                    </button>
+                </div>
             </form>
         </div>
     );
