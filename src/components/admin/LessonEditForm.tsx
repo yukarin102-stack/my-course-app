@@ -55,26 +55,99 @@ export default function LessonEditForm({ lesson, courseId }: { lesson: Lesson, c
                 </div>
 
                 {(currentType === 'video' || currentType === 'live') && (
-                    <div style={{ marginBottom: '1.5rem' }}>
-                        <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '0.5rem' }}>
-                            動画URL または YouTube ID
-                        </label>
-                        <input
-                            type="text"
-                            name="videoUrl"
-                            defaultValue={lesson.videoUrl || ''}
-                            placeholder="例: dQw4w9WgXcQ または https://drive.google.com/..."
-                            style={{ width: '100%', padding: '0.75rem', border: '1px solid #d1d5db', borderRadius: '4px', fontFamily: '"Yu Gothic", "YuGothic", sans-serif' }}
-                        />
-                        <p style={{ fontSize: '0.875rem', color: '#6b7280', marginTop: '0.5rem' }}>
-                            YouTube ID、Google Drive、Dropboxなどの共有リンクを入力できます
-                        </p>
-                        <div style={{ marginTop: '0.5rem' }}>
-                            <a href="/admin/media" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.875rem', color: '#2563eb', textDecoration: 'underline' }}>
-                                データをアップロードする（別タブで開く）
-                            </a>
+                    <>
+                        <div style={{ marginBottom: '1.5rem' }}>
+                            <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '0.5rem' }}>
+                                動画URL または YouTube ID
+                            </label>
+                            <input
+                                type="text"
+                                name="videoUrl"
+                                defaultValue={lesson.videoUrl || ''}
+                                placeholder="例: dQw4w9WgXcQ または https://drive.google.com/..."
+                                style={{ width: '100%', padding: '0.75rem', border: '1px solid #d1d5db', borderRadius: '4px', fontFamily: '"Yu Gothic", "YuGothic", sans-serif' }}
+                            />
+                            <p style={{ fontSize: '0.875rem', color: '#6b7280', marginTop: '0.5rem' }}>
+                                YouTube ID、Google Drive、Dropboxなどの共有リンクを入力できます
+                            </p>
+                            <div style={{ marginTop: '0.5rem' }}>
+                                <a href="/admin/media" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.875rem', color: '#2563eb', textDecoration: 'underline' }}>
+                                    データをアップロードする（別タブで開く）
+                                </a>
+                            </div>
                         </div>
-                    </div>
+
+                        <div style={{ marginBottom: '1.5rem' }}>
+                            <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '0.5rem' }}>
+                                動画の説明（テキスト）
+                            </label>
+                            <div style={{ marginBottom: '0.5rem', display: 'flex', gap: '0.5rem' }}>
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        const textarea = descriptionRef.current;
+                                        if (!textarea) return;
+                                        const start = textarea.selectionStart;
+                                        const end = textarea.selectionEnd;
+                                        const text = textarea.value;
+                                        const selectedText = text.substring(start, end);
+                                        const newText = text.substring(0, start) + '<b>' + selectedText + '</b>' + text.substring(end);
+                                        textarea.value = newText;
+                                        textarea.focus();
+                                        textarea.setSelectionRange(start + 3, end + 3);
+                                    }}
+                                    style={{
+                                        padding: '0.25rem 0.75rem',
+                                        border: '1px solid #d1d5db',
+                                        borderRadius: '4px',
+                                        backgroundColor: '#fff',
+                                        fontWeight: 'bold',
+                                        cursor: 'pointer'
+                                    }}
+                                    title="太字"
+                                >
+                                    B
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        const textarea = descriptionRef.current;
+                                        if (!textarea) return;
+                                        const start = textarea.selectionStart;
+                                        const end = textarea.selectionEnd;
+                                        const text = textarea.value;
+                                        const selectedText = text.substring(start, end);
+                                        const newText = text.substring(0, start) + '<u>' + selectedText + '</u>' + text.substring(end);
+                                        textarea.value = newText;
+                                        textarea.focus();
+                                        textarea.setSelectionRange(start + 3, end + 3);
+                                    }}
+                                    style={{
+                                        padding: '0.25rem 0.75rem',
+                                        border: '1px solid #d1d5db',
+                                        borderRadius: '4px',
+                                        backgroundColor: '#fff',
+                                        textDecoration: 'underline',
+                                        cursor: 'pointer'
+                                    }}
+                                    title="下線"
+                                >
+                                    U
+                                </button>
+                            </div>
+                            <textarea
+                                ref={descriptionRef}
+                                name="description"
+                                defaultValue={lesson.description || ''}
+                                rows={10}
+                                placeholder="動画の補足説明や内容を入力してください..."
+                                style={{ width: '100%', padding: '0.75rem', border: '1px solid #d1d5db', borderRadius: '4px', fontFamily: '"Yu Gothic", "YuGothic", sans-serif' }}
+                            />
+                            <p style={{ fontSize: '0.875rem', color: '#6b7280', marginTop: '0.5rem' }}>
+                                ボタンを押すとタグ（&lt;b&gt;など）が挿入されます。実際の表示で太字になります。
+                            </p>
+                        </div>
+                    </>
                 )}
 
                 {currentType === 'text' && (
