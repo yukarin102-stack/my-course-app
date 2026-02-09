@@ -17,19 +17,24 @@
     width: 320px;
     background-color: #e8eef4;
     border-right: 1px solid #c5d4e3;
-    display: flex !important;
-    flex-direction: column !important;
     height: 100% !important;
     max-height: 100% !important;
-    overflow: hidden !important;
-    flex-shrink: 0 !important;
+    overflow-y: auto !important;
+    /* Sidebar handles the scroll */
+    overflow-x: hidden !important;
+    display: block !important;
+    /* No flex needed for this approach */
+    -webkit-overflow-scrolling: touch;
 }
 
 .sidebarHeader {
     padding: 1.5rem;
-    border-bottom: 1px solid #c5d4e3;
+    border-bottom: 3px solid #b8cce0;
+    /* More distinct border */
     background-color: #dce5ee;
-    flex-shrink: 0 !important;
+    position: sticky !important;
+    top: 0;
+    z-index: 100;
 }
 
 .courseTitle {
@@ -61,12 +66,10 @@
 .lessonList {
     list-style: none;
     padding: 0;
-    flex: 1 !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    -webkit-overflow-scrolling: touch !important;
-    min-height: 0 !important;
-    padding-bottom: 8rem;
+    overflow: visible !important;
+    /* Let content expand inside sidebar */
+    padding-bottom: 15rem;
+    /* Massive padding to ensure nothing is missed */
 }
 
 .moduleGroup {

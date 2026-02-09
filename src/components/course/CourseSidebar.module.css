@@ -2,19 +2,27 @@
     width: 350px;
     background-color: #1a1a1a;
     border-right: 1px solid #333;
-    display: flex !important;
-    flex-direction: column !important;
     height: 100% !important;
     max-height: 100% !important;
-    overflow: hidden !important;
-    flex-shrink: 0 !important;
+    overflow-y: auto !important;
+    /* Sidebar handles the scroll */
+    overflow-x: hidden !important;
+    display: block !important;
+    /* No flex needed for this approach */
+    -webkit-overflow-scrolling: touch;
+}
+
+.stickyHeaderArea {
+    position: sticky !important;
+    top: 0;
+    z-index: 100;
+    background-color: #1a1a1a;
+    border-bottom: 2px solid #333;
 }
 
 .sidebarHeader {
     padding: var(--spacing-lg, 1.5rem);
-    border-bottom: 1px solid #333;
     background-color: #1a1a1a;
-    flex-shrink: 0 !important;
 }
 
 .courseTitle {
@@ -26,9 +34,7 @@
 }
 
 .navigationSection {
-    border-bottom: 1px solid #333;
     background-color: #222;
-    flex-shrink: 0 !important;
 }
 
 .navLink {
@@ -53,15 +59,10 @@
 }
 
 .moduleList {
-    flex: 1 !important;
-    /* Take remaining space in flex container */
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    -webkit-overflow-scrolling: touch !important;
-    min-height: 0 !important;
-    /* Important fix for flex child overflow */
-    padding-bottom: 8rem;
-    /* Ensure last items aren't cut off */
+    overflow: visible !important;
+    /* Let content expand inside sidebar */
+    padding-bottom: 15rem;
+    /* Massive padding to ensure nothing is missed */
 }
 
 .moduleItem {

@@ -32,26 +32,28 @@ export default function CourseSidebar({ courseId, courseTitle, modules }: Course
 
     return (
         <aside className={styles.sidebar}>
-            <div className={styles.sidebarHeader}>
-                <Link href="/dashboard" style={{ fontSize: '0.8rem', color: '#888', marginBottom: '0.5rem', display: 'block' }}>
-                    &larr; ダッシュボードに戻る
-                </Link>
-                <h2 className={styles.courseTitle}>{courseTitle}</h2>
-            </div>
+            <div className={styles.stickyHeaderArea}>
+                <div className={styles.sidebarHeader}>
+                    <Link href="/dashboard" style={{ fontSize: '0.8rem', color: '#888', marginBottom: '0.5rem', display: 'block' }}>
+                        &larr; ダッシュボードに戻る
+                    </Link>
+                    <h2 className={styles.courseTitle}>{courseTitle}</h2>
+                </div>
 
-            <div className={styles.navigationSection}>
-                <Link href={`/courses/${courseId}/learn`} className={`${styles.navLink} ${!isCommunity && !currentLessonId ? styles.active : ''}`}>
-                    <Home size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
-                    ホーム (お知らせ)
-                </Link>
-                <Link href={`/courses/${courseId}/learn?lessonId=${modules[0]?.lessons[0]?.id}`} className={`${styles.navLink} ${!isCommunity && currentLessonId ? styles.active : ''}`}>
-                    <PlayCircle size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
-                    レッスン
-                </Link>
-                <Link href={`/courses/${courseId}/community`} className={`${styles.navLink} ${isCommunity ? styles.active : ''}`}>
-                    <MessageSquare size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
-                    コミュニティ
-                </Link>
+                <div className={styles.navigationSection}>
+                    <Link href={`/courses/${courseId}/learn`} className={`${styles.navLink} ${!isCommunity && !currentLessonId ? styles.active : ''}`}>
+                        <Home size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+                        ホーム (お知らせ)
+                    </Link>
+                    <Link href={`/courses/${courseId}/learn?lessonId=${modules[0]?.lessons[0]?.id}`} className={`${styles.navLink} ${!isCommunity && currentLessonId ? styles.active : ''}`}>
+                        <PlayCircle size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+                        レッスン
+                    </Link>
+                    <Link href={`/courses/${courseId}/community`} className={`${styles.navLink} ${isCommunity ? styles.active : ''}`}>
+                        <MessageSquare size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+                        コミュニティ
+                    </Link>
+                </div>
             </div>
 
             <div className={styles.moduleList}>
