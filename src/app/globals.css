@@ -11,8 +11,8 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  /* Prevent whole page from scrolling if we want app-like feel */
+  overflow: auto;
+  /* Allow natural fallback if needed */
 }
 
 /* Allow scrolling on normal pages but not the ones with fixed sidebars */

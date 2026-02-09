@@ -10,6 +10,7 @@
     display: block !important;
     /* No flex needed for this approach */
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
 }
 
 .stickyHeaderArea {
@@ -21,30 +22,36 @@
 }
 
 .sidebarHeader {
-    padding: var(--spacing-lg, 1.5rem);
+    padding: 0.75rem 1rem !important;
+    /* High density compactness */
     background-color: #1a1a1a;
 }
 
 .courseTitle {
-    font-size: 1rem;
+    font-size: 0.9rem !important;
+    /* Smaller text for overview */
     font-weight: bold;
     color: #fff;
-    line-height: 1.4;
+    line-height: 1.4 !important;
     margin: 0;
 }
 
 .navigationSection {
     background-color: #222;
+    padding: 0.5rem 0.5rem !important;
+    /* High density compactness */
 }
 
 .navLink {
-    display: block;
-    padding: var(--spacing-md, 1rem) var(--spacing-lg, 1.5rem);
-    color: #aaa;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem !important;
+    /* High density compactness */
+    color: #ccc;
     text-decoration: none;
-    font-weight: bold;
+    font-size: 0.85rem !important;
     border-left: 3px solid transparent;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
 }
 
 .navLink:hover {
@@ -61,8 +68,8 @@
 .moduleList {
     overflow: visible !important;
     /* Let content expand inside sidebar */
-    padding-bottom: 15rem;
-    /* Massive padding to ensure nothing is missed */
+    padding-bottom: 5rem !important;
+    /* Reasonable padding */
 }
 
 .moduleItem {
@@ -70,11 +77,13 @@
 }
 
 .moduleTitle {
-    padding: var(--spacing-md, 1rem) var(--spacing-lg, 1.5rem);
-    background-color: #222;
-    font-size: 0.9rem;
+    padding: 0.5rem 1rem !important;
+    /* High density compactness */
+    background-color: #333;
+    font-size: 0.75rem !important;
     font-weight: bold;
     color: #aaa;
+    text-transform: uppercase;
 }
 
 .lessonList {
@@ -87,12 +96,13 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-sm, 0.5rem);
-    padding: var(--spacing-md, 0.8rem) var(--spacing-lg, 1.5rem);
+    padding: 0.4rem 1rem 0.4rem 1.25rem !important;
+    /* High density compactness */
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.2s ease;
     color: #ccc;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.85rem !important;
     border-left: 3px solid transparent;
 }
 
