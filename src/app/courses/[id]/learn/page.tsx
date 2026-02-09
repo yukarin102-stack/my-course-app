@@ -383,6 +383,9 @@ export default async function LearnPage({
                                                     {label}
                                                 </div>
                                             </div>
+                                            <span style={{ marginLeft: 'auto', color: '#2563eb', fontWeight: 'bold' }}>
+                                                ↓
+                                            </span>
                                         </a>
                                     </div>
                                 );
