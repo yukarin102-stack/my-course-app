@@ -290,6 +290,93 @@ export default async function LearnPage({
                                 </div>
                             )}
 
+                            {/* 参考資料ダウンロード */}
+                            {currentLesson.attachmentUrl && (() => {
+                                const fileName = currentLesson.attachmentName || currentLesson.attachmentUrl;
+                                const ext = fileName.toLowerCase().split('.').pop() || '';
+
+                                let icon = '📄';
+                                let bgColor = '#6b7280';
+                                let label = 'ファイル';
+
+                                if (['pdf'].includes(ext)) {
+                                    icon = '📕'; bgColor = '#dc2626'; label = 'PDF';
+                                } else if (['xlsx', 'xls', 'csv'].includes(ext)) {
+                                    icon = '📊'; bgColor = '#16a34a'; label = 'Excel';
+                                } else if (['docx', 'doc'].includes(ext)) {
+                                    icon = '📝'; bgColor = '#2563eb'; label = 'Word';
+                                } else if (['pptx', 'ppt'].includes(ext)) {
+                                    icon = '📽️'; bgColor = '#ea580c'; label = 'PowerPoint';
+                                } else if (['zip', 'rar', '7z'].includes(ext)) {
+                                    icon = '📦'; bgColor = '#7c3aed'; label = '圧縮ファイル';
+                                } else if (['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(ext)) {
+                                    icon = '🖼️'; bgColor = '#0891b2'; label = '画像';
+                                } else if (['mp4', 'mov', 'avi'].includes(ext)) {
+                                    icon = '🎬'; bgColor = '#be185d'; label = '動画';
+                                } else if (['mp3', 'wav', 'm4a'].includes(ext)) {
+                                    icon = '🎵'; bgColor = '#9333ea'; label = '音声';
+                                }
+
+                                return (
+                                    <div style={{
+                                        padding: '1.5rem',
+                                        backgroundColor: '#f0f4f8',
+                                        borderRadius: '8px',
+                                        marginBottom: '2rem',
+                                        border: '1px solid #c5d4e3'
+                                    }}>
+                                        <h3 style={{
+                                            fontSize: '1rem',
+                                            fontWeight: 'bold',
+                                            marginBottom: '1rem',
+                                            color: '#1e3a5f',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '0.5rem'
+                                        }}>
+                                            📎 参考資料
+                                        </h3>
+                                        <a
+                                            href={currentLesson.attachmentUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            style={{
+                                                display: 'inline-flex',
+                                                alignItems: 'center',
+                                                gap: '0.75rem',
+                                                padding: '1rem 1.5rem',
+                                                backgroundColor: 'white',
+                                                border: '1px solid #d4e0ed',
+                                                borderRadius: '8px',
+                                                textDecoration: 'none',
+                                                transition: 'box-shadow 0.2s, transform 0.2s'
+                                            }}
+                                        >
+                                            <span style={{
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                width: '40px',
+                                                height: '40px',
+                                                backgroundColor: bgColor,
+                                                borderRadius: '8px',
+                                                fontSize: '1.25rem'
+                                            }}>
+                                                {icon}
+                                            </span>
+                                            <div>
+                                                <div style={{ fontWeight: 'bold', color: '#1e3a5f' }}>
+                                                    {currentLesson.attachmentName || 'ダウンロード'}
+                                                </div>
+                                                <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>
+                                                    {label}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                );
+                            })()}
+
                             <div className={styles.navigationButtons}>
                                 {prevLesson ? (
                                     <Link href={`/courses/${id}/learn?lessonId=${prevLesson.id}`}>
