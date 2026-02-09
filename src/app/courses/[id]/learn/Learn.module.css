@@ -15,12 +15,14 @@
     flex-shrink: 0;
     height: 100%;
     min-height: 0;
+    overflow-y: hidden;
 }
 
 .sidebarHeader {
     padding: 1.5rem;
     border-bottom: 1px solid #c5d4e3;
     background-color: #dce5ee;
+    flex-shrink: 0;
 }
 
 .courseTitle {
